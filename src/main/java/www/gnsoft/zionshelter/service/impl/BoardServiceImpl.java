@@ -23,7 +23,6 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<BoardVO> selectAllBoard() {
 
-        System.out.println("serviceimpl :  " + boardMapper.selectAllBoard());
         return boardMapper.selectAllBoard();
     }
 
