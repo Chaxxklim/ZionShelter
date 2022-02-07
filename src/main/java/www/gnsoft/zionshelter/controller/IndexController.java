@@ -27,4 +27,9 @@ public class IndexController {
     public void insert(){
         boardService.testInsert();
     }
+
+    @RequestMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
 }
