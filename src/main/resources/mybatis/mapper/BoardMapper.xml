@@ -6,7 +6,7 @@
 <mapper namespace="www.gnsoft.zionshelter.mapper.BoardMapper">
 
     <select id="selectAllBoard" resultType="BoardVO">
-        SELECT * FROM BOARD;
+        SELECT * FROM BOARD
     </select>
 
     <insert id="testInsert">

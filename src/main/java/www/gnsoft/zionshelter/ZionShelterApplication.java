@@ -1,6 +1,6 @@
 package www.gnsoft.zionshelter;
 
-import org.apache.ibatis.session.SqlSessionFactory;
+//import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
-@MapperScan(basePackageClasses = ZionShelterApplication.class)
+//@MapperScan(basePackageClasses = ZionShelterApplication.class)
 //@MapperScan(value = {"www.gnsoft.zionshelter.mapper"})
 @SpringBootApplication
 public class ZionShelterApplication {
