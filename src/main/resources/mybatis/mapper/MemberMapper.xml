@@ -6,9 +6,32 @@
 <mapper namespace="www.gnsoft.zionshelter.mapper.MemberMapper">
 
     <select id="selectMember" parameterType="MemberVO" resultType="MemberVO">
-        SELECT * FROM MEMBER
+        SELECT MEM_ID as memberId,
+               MEM_PW as memberPassword,
+               MEM_IDX as memberIdx,
+               MEM_NM as memberName,
+               MEM_PH as memberPhoneNumber,
+               MEM_ZIPCODE as memberZipcode,
+               MEM_ADDR1 as memberAddress1,
+               MEM_ADDR2 as memberAddress2,
+               MEM_DVSN as memberDivision
+        FROM MEMBER
             WHERE MEM_ID = #{memberId} AND
                   MEM_PW = #{memberPassword}
+    </select>
+    
+    <select id="checkId" parameterType="MemberVO" resultType="MemberVO">
+        SELECT MEM_ID as memberId,
+               MEM_PW as memberPassword,
+               MEM_IDX as memberIdx,
+               MEM_NM as memberName,
+               MEM_PH as memberPhoneNumber,
+               MEM_ZIPCODE as memberZipcode,
+               MEM_ADDR1 as memberAddress1,
+               MEM_ADDR2 as memberAddress2,
+               MEM_DVSN as memberDivision
+        FROM MEMBER
+        WHERE MEM_ID = #{memberId}
     </select>
 
 <!--    <insert id="testInsert">-->

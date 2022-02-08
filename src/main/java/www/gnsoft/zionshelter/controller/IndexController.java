@@ -4,15 +4,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import www.gnsoft.zionshelter.service.BoardService;
 import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.MemberVO;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Map;
+
 @Controller
 @Slf4j
 public class IndexController {
-
     private final MemberService memberService;
     private final BoardService boardService;
 
@@ -24,8 +28,6 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(){
-        System.out.println("오긴옴??");
-        log.info(boardService.selectAllBoard().toString());
         return "index";
     }
 
@@ -45,17 +47,37 @@ public class IndexController {
     }
 
     @PostMapping("/loginPost")
-    public String loginPost(String id, String password){
+    public String loginPost(String id, String password, HttpServletRequest request){
+        HttpSession session = request.getSession();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(id);
         memberVO.setMemberPassword(password);
-
-        System.out.println("id :" + id + " , pw : " + password);
-        System.out.println("vo : "+ memberVO);
-        System.out.println("service : " + memberService.toString());
-        memberService.selectMember(memberVO);
-        System.out.println("result : " + memberService.selectMember(memberVO).toString());
-        return null;
+        if(memberService.selectMember(memberVO) == null) {
+            return "login";
+        } else {
+            session.setAttribute("memberVO", memberService.selectMember(memberVO));
+            return "index";
+        }
     }
+
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
+    }
+
+    @PostMapping("/idCheckPost")
+    public String idCheckPost(@RequestBody Map<String, Object> map){
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId((String)map.get("inputId"));
+
+        String inputId = (String)map.get("inputId");
+        System.out.println("inputId : " + inputId);
+        return null;
+
+    }
+
+
+
+
 
 }

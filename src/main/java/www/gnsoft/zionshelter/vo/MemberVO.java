@@ -14,4 +14,5 @@ public class MemberVO {
     private String memberZipcode;
     private String memberAddress1;
     private String memberAddress2;
+    private String memberDivision;
 }
