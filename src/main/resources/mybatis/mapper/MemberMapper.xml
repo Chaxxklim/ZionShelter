@@ -20,7 +20,7 @@
                   MEM_PW = #{memberPassword}
     </select>
     
-    <select id="checkId" parameterType="MemberVO" resultType="MemberVO">
+    <select id="idCheck" parameterType="MemberVO" resultType="MemberVO">
         SELECT MEM_ID as memberId,
                MEM_PW as memberPassword,
                MEM_IDX as memberIdx,

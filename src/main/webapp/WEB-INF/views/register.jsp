@@ -75,7 +75,6 @@
 <script>
     function idCheck(){
         const inputId = document.getElementById('id-input').value;
-        console.log(inputId)
 
         $.ajax({
                 url : "/idCheckPost",
@@ -85,13 +84,13 @@
                 }),
                 dataType : "json",
                 contentType : 'application/json',
-                success : function (res){
-                    if(res === 'Y'){
-                        console.log("ajax Y")
-                        // showGreenDiv();
-                    }else{
-                        // showRedDiv();
+                success : function (data){
+                    if(data.result === 'Y') {
+                        console.log("사용가능")
+                    } else {
+                        console.log("중복이다 인마")
                     }
+
                 }
             })
     }

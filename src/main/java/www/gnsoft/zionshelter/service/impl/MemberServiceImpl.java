@@ -16,12 +16,23 @@ public class MemberServiceImpl implements MemberService {
 
 
     @Override
-    public MemberVO selectMember(MemberVO memberVO) {
+    public MemberVO selectMember(String id, String password) {
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(id);
+        memberVO.setMemberPassword(password);
         return memberMapper.selectMember(memberVO);
     }
 
     @Override
     public MemberVO insertMember(MemberVO memberVO) {
         return memberMapper.insertMember(memberVO);
+    }
+
+    @Override
+    public MemberVO idCheck(String inputId) {
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(inputId);
+        return memberMapper.idCheck(memberVO);
+
     }
 }
