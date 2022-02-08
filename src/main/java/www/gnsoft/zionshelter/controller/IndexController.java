@@ -70,17 +70,14 @@ public class IndexController {
     @ResponseBody
     public Map<String, Object> idCheckPost(@RequestBody Map<String, Object> map){
         Map<String, Object> resultMap = new HashMap<>();
-
         String result = "";
         if(memberService.idCheck((String)map.get("inputId")) == null){
             result = "Y";
         } else {
             result = "N";
         }
-        System.out.println(memberService.idCheck((String)map.get("inputId")));
         resultMap.put("result", result);
         return resultMap;
-
     }
 
 

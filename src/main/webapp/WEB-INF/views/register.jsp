@@ -12,7 +12,7 @@
     <table class="register-table">
         <form:form name="register-form" method="post" action="registerPost">
             <tr>
-                <td><label for="id-input">ID</label></td><td><input id="id-input" type="text" name="id" onkeyup="idCheck()"></td><td class="id-check-td" id="id-check-td">testText</td>
+                <td><label for="id-input">ID</label></td><td><input id="id-input" type="text" name="id" onkeyup="idCheck()"></td><td class="id-check-td" id="id-check-td">None</td>
             </tr>
             <tr>
                 <td><label for="pw-input">비밀번호</label></td><td><input id="pw-input" type="password" name="password"></td>
@@ -65,16 +65,24 @@
 
     .id-check-td{
         display: none;
+        white-space:nowrap;
     }
 
     .pw-check-td{
         display: none;
+        white-space:nowrap;
     }
 
 </style>
 <script>
     function idCheck(){
         const inputId = document.getElementById('id-input').value;
+        console.log(inputId)
+        console.log(inputId.length);
+        if(inputId === '' || inputId.length === 0){
+            $('#id-check-td').css('color', 'red');
+            $('#id-check-td').text('사용 불가능');
+        }
 
         $.ajax({
                 url : "/idCheckPost",
@@ -86,9 +94,17 @@
                 contentType : 'application/json',
                 success : function (data){
                     if(data.result === 'Y') {
-                        console.log("사용가능")
+                        console.log("사용가능");
+                        $('#id-check-td').css('display', 'block');
+                        $('#id-check-td').css('color', 'green');
+                        $('#id-check-td').text('사용 가능');
+
                     } else {
                         console.log("중복이다 인마")
+                        $('#id-check-td').css('display', 'block');
+                        $('#id-check-td').css('color', 'red');
+                        $('#id-check-td').text('사용 불가능');
+
                     }
 
                 }
