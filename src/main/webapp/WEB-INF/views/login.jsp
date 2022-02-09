@@ -8,15 +8,15 @@
 <body>
 <div class="login-container">
     <table class="login-table">
-        <form:form name="login-form" method="post" action="loginPost">
+        <form:form name="login-form" method="post" action="loginPost" modelAttribute="memberVO">
             <tr>
-                <td><label for="id-input">ID</label></td><td><input id="id-input" type="text" name="id"></td>
+                <td><label for="id-input">ID</label></td><td><form:input id="id-input" type="text" name="id" path="memberId"/></td>
             </tr>
             <tr>
-                <td><label for="pw-input">PW</label></td><td><input id="pw-input" type="password" name="password"></td>
+                <td><label for="pw-input">PW</label></td><td><form:input id="pw-input" type="password" name="password" path="memberPassword"/></td>
             </tr>
             <tr>
-                <td colspan="2"><button type="submit">로그인</button></td>
+                <td colspan="2"><form:button type="submit">로그인</form:button></td>
             </tr>
         </form:form>
     </table>

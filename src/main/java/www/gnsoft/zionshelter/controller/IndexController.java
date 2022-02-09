@@ -4,16 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import www.gnsoft.zionshelter.service.BoardService;
 import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.MemberVO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,24 +44,24 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login(@ModelAttribute("memberVO") MemberVO memberVO){
         return "login";
     }
 
     @PostMapping("/loginPost")
-    public String loginPost(String id, String password, HttpServletRequest request){
+    public String loginPost(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request){
         HttpSession session = request.getSession();
-        if(memberService.selectMember(id, password) == null) {
+        if(memberService.selectMember(memberVO) == null) {
             return "login";
         } else {
-            session.setAttribute("memberVO", memberService.selectMember(id, password));
-            System.out.println(memberService.selectMember(id, password).toString());
+            session.setAttribute("memberVO", memberService.selectMember(memberVO));
+            System.out.println(memberService.selectMember(memberVO).toString());
             return "index";
         }
     }
 
     @RequestMapping("/register")
-    public String register(){
+    public String register(@ModelAttribute("memberVO") MemberVO memberVO){
         return "register";
     }
 

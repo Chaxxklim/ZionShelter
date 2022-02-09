@@ -16,10 +16,8 @@ public class MemberServiceImpl implements MemberService {
 
 
     @Override
-    public MemberVO selectMember(String id, String password) {
-        MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(id);
-        memberVO.setMemberPassword(password);
+    public MemberVO selectMember(MemberVO memberVO) {
+
         return memberMapper.selectMember(memberVO);
     }
 

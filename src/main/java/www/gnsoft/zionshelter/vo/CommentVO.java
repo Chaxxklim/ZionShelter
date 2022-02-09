@@ -8,6 +8,7 @@ import java.sql.Date;
 @Data
 @NoArgsConstructor
 public class CommentVO {
+    
     private long commentIdx;
     private long boardIdx;
     private long memberIdx;
