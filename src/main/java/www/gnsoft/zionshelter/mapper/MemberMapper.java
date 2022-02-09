@@ -13,4 +13,6 @@ public interface MemberMapper {
     MemberVO insertMember(MemberVO memberVO);
 
     MemberVO idCheck(MemberVO memberVO);
+
+    void registerMember(MemberVO memberVO);
 }

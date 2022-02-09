@@ -34,6 +34,10 @@
         WHERE MEM_ID = #{memberId}
     </select>
 
+    <insert id="registerMember" parameterType="memberVO">
+        INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NM, MEM_PH, MEM_ZIPCODE, MEM_ADDR1, MEM_ADDR2)
+                VALUES(#{memberId}, #{memberPassword}, #{memberName}, #{memberPhoneNumber}, #{memberZipcode}, #{memberAddress1}, #{memberAddress2})
+    </insert>
 <!--    <insert id="testInsert">-->
 <!--        INSERT INTO BOARD VALUES(100,1,1,1,1,1);-->
 <!--    </insert>-->

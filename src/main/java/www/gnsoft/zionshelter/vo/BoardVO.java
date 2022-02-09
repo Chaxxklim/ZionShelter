@@ -10,6 +10,7 @@ import java.sql.Date;
 public class BoardVO {
     private long boardIdx;
     private long memberIdx;
+    private String memberName;
     private String boardDivision;
     private String boardTitle;
     private String boardContent;

@@ -33,4 +33,9 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.idCheck(memberVO);
 
     }
+
+    @Override
+    public void registerMember(MemberVO memberVO) {
+        memberMapper.registerMember(memberVO);
+    }
 }

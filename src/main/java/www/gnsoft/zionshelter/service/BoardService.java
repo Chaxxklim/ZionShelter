@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface BoardService {
 
-    List<BoardVO> selectAllBoard();
+    List<BoardVO> selectAllFreeBoard();
 
     void testInsert();
+
+    BoardVO selectFreeBoard(Long boardIdx);
 }

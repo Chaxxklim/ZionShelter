@@ -1,5 +1,9 @@
+<%@ page import="www.gnsoft.zionshelter.vo.MemberVO" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    MemberVO memberVO = (MemberVO) session.getAttribute("memberVO");
+    %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +15,11 @@
     </div>
     <div class="greetings-text-div">
         <div class="greetings-highlight-div">
-            인사말
+            인사말vo
+            <%
+                System.out.println(memberVO);
+            %>
+            <%=memberVO.getMemberName()%>
         </div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna

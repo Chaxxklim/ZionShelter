@@ -1,7 +1,6 @@
 package www.gnsoft.zionshelter.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -77,6 +76,17 @@ public class IndexController {
         }
         resultMap.put("result", result);
         return resultMap;
+    }
+
+    @PostMapping("/registerPost")
+    public String registerPost(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        MemberVO registerdVO = null;
+        memberService.registerMember(memberVO);
+        registerdVO = memberService.selectMember(memberVO);
+        session.setAttribute("memberVO", registerdVO);
+        return "index";
+
     }
 
 

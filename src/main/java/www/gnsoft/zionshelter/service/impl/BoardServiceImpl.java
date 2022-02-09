@@ -13,21 +13,24 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
+    @Autowired
     private BoardMapper boardMapper;
 
-    @Autowired
-    public BoardServiceImpl(BoardMapper boardMapper) {
-        this.boardMapper = boardMapper;
-    }
 
     @Override
-    public List<BoardVO> selectAllBoard() {
-
-        return boardMapper.selectAllBoard();
+    public List<BoardVO> selectAllFreeBoard() {
+        return boardMapper.selectAllFreeBoard();
     }
 
     @Override
     public void testInsert() {
         boardMapper.testInsert();
+    }
+
+    @Override
+    public BoardVO selectFreeBoard(Long boardIdx) {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setBoardIdx(boardIdx);
+        return boardMapper.selectFreeBoard(boardVO);
     }
 }

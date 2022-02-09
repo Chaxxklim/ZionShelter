@@ -3,14 +3,60 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="www.gnsoft.zionshelter.mapper.BoardMapper">
 
-    <select id="selectAllBoard" resultType="BoardVO">
-        SELECT * FROM BOARD
+    <resultMap id="freeBoardVOResultMap" type="BoardVO">
+        <id property="boardIdx" column="board_idx"/>
+        <id property="boardDivision" column="board_dvsn"/>
+        <id property="boardTitle" column="board_title"/>
+        <id property="boardContent" column="board_cont"/>
+        <id property="boardWriteDate" column="board_writedate"/>
+        <id property="memberName" column="mem_nm"/>
+        <id property="memberIdx" column="mem_idx"/>
+
+    </resultMap>
+
+    <select id="selectAllFreeBoard" resultMap="freeBoardVOResultMap">
+        select B.board_idx,
+               M.mem_idx,
+               M.mem_nm,
+               B.board_dvsn,
+               B.board_title,
+               B.board_cont,
+               B.board_writedate
+        from member M, board B
+        where B.board_dvsn = 'F' and
+            B.mem_idx = M.mem_idx
     </select>
 
-    <insert id="testInsert">
-        INSERT INTO BOARD VALUES(100,1,1,1,1,1);
-    </insert>
+    <select id="selectFreeBoard" resultMap="freeBoardVOResultMap" parameterType="BoardVO">
+        select B.board_idx,
+               M.mem_idx,
+               M.mem_nm,
+               B.board_dvsn,
+               B.board_title,
+               B.board_cont,
+               B.board_writedate
+        from member M, board B
+        where B.board_dvsn = 'F' and
+            B.mem_idx = M.mem_idx and
+            B.board_idx = #{boardIdx}
+    </select>
+    
+    <select id="selectAllNoticeBoard" resultType="java.util.List">
+        SELECT * FROM BOARD where BOARD_DVSN = 'N'
+    </select>
+
+    <select id="selectBoard" parameterType="BoardVO" resultType="BoardVO">
+        SELECT board_idx as boardIdx,
+               mem_idx as memberIdx,
+               board_dvsn as boardDivision,
+               board_title as boardTitle,
+               board_cont as boardCont,
+               board_writedate as boardWriteDate
+        from board
+        where board_idx = #{boardIdx}
+    </select>
 
 </mapper>

@@ -12,4 +12,6 @@ public interface MemberService {
 
 
     MemberVO idCheck(String inputId);
+
+    void registerMember(MemberVO memberVO);
 }

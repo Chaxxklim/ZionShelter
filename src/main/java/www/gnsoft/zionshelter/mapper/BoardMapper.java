@@ -10,7 +10,9 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
-    List<BoardVO> selectAllBoard();
+    List<BoardVO> selectAllFreeBoard();
 
     void testInsert();
+
+    BoardVO selectFreeBoard(BoardVO boardVO);
 }
