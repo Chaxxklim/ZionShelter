@@ -1,14 +1,17 @@
 package www.gnsoft.zionshelter.vo;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Data
+
 @NoArgsConstructor
+@Data
 public class MemberVO {
     private long memberIdx;
 
@@ -45,4 +48,6 @@ public class MemberVO {
     private String memberAddress2;
 
     private String memberDivision;
+    
+    
 }
