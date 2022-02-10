@@ -9,13 +9,17 @@ import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.BoardVO;
 import www.gnsoft.zionshelter.vo.CommentVO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class BoardController {
+
     private final MemberService memberService;
     private final BoardService boardService;
 
+    @Autowired
     public BoardController(MemberService memberService, BoardService boardService) {
         this.memberService = memberService;
         this.boardService = boardService;
@@ -42,11 +46,21 @@ public class BoardController {
         model.addAttribute("commentVO", commentVO);
         return "freeBoardDetailView";
     }
-    //---------제이가 만들어봐 댓글~----------
+
+
     @PostMapping("/commentPost")
-    public String commentPost(@ModelAttribute("commentVO") CommentVO commentVO){
+    @ResponseBody
+    public Map<String, Object> commentPost(@RequestBody Map<String, Object> map){
+
+        CommentVO commentVO = new CommentVO();
+        BoardVO boardVO = new BoardVO();
+        commentVO.setBoardIdx(Long.parseLong((String) map.get("boardIdx")));
+        commentVO.setCommentContent((String) map.get("commentContent"));
+        commentVO.setMemberIdx(Long.parseLong((String) map.get("memberIdx")));
         System.out.println(commentVO);
-        return null;
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("insertCommentVO", boardService.insertComment(commentVO));
+        return resultMap;
 
     }
 }

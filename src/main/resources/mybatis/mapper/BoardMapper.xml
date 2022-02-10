@@ -59,4 +59,5 @@
         where board_idx = #{boardIdx}
     </select>
 
+
 </mapper>

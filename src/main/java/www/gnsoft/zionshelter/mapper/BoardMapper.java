@@ -4,6 +4,7 @@ package www.gnsoft.zionshelter.mapper;
 //import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Mapper;
 import www.gnsoft.zionshelter.vo.BoardVO;
+import www.gnsoft.zionshelter.vo.CommentVO;
 
 import java.util.List;
 
@@ -15,4 +16,8 @@ public interface BoardMapper {
     void testInsert();
 
     BoardVO selectFreeBoard(BoardVO boardVO);
+
+
+
+
 }

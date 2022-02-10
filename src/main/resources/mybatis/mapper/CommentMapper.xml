@@ -27,10 +27,24 @@
             BOARD_IDX = #{boardIdx}
     </select>
 
+    <select id="selectLatestComment" parameterType="CommentVO" resultType="CommentVO">
+        SELECT C.COMM_IDX AS commentIdx,
+               C.BOARD_IDX AS boardidx,
+               C.COMM_DATE AS commentDate,
+               C.COMM_CONT AS commentContent,
+               M.MEM_IDX AS memberIdx,
+               M.MEM_NM AS memberName
+        FROM    COMMENT C, MEMBER M
+        WHERE M.MEM_IDX = C.MEM_IDX AND
+            BOARD_IDX = #{boardIdx}
+        ORDER BY COMM_IDX DESC LIMIT 1
+
+
+    </select>
+
     <insert id="insertCommentByBoardIdx" parameterType="CommentVO">
         INSERT INTO COMMENT (BOARD_IDX, MEM_IDX, COMM_CONT) VALUES
-            (#{boardIdx}, #{memberIdx}, #{commentContent});
+            (#{boardIdx}, #{memberIdx}, #{commentContent})
     </insert>
-
 
 </mapper>

@@ -7,9 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-    <table class="board-table">
+    <table class="board-table" id="board-table">
         <tr>
             <td>제목</td><td>${boardVO.boardTitle}</td>
         </tr>
@@ -24,17 +25,15 @@
         </tr>
     </table>
 
-    <table class="comment-table">
+    <table class="comment-table" id="comment-table">
         <c:forEach items="${commentVOList}" var="commentVO">
         <tr>
             <td>${commentVO.memberName}</td><td>${commentVO.commentContent}</td><td>${commentVO.commentDate}</td>
         </tr>
         </c:forEach>
         <tr>
-            <form:form name="commentForm" method="post" action="commentPost" modelAttribute="commentVO">
-                <td><form:textarea placeholder="댓글 작성" path="commentContent" name="commentContent"/></td><td><button type="submit">작성</button></td>
-                <form:input id="" value="${boardVO.boardIdx}" path="boardIdx" readonly="true"/>
-            </form:form>
+            <td><textarea id="commentContent"></textarea></td>
+            <td><button type="button" onclick="postComment()">작성</button></td>
         </tr>
     </table>
 </body>
@@ -43,4 +42,37 @@
         border: 1px solid black;
     }
 </style>
+<script>
+    function postComment(){
+
+        let commentContent = document.getElementById('commentContent').value;
+        let boardIdx = '${boardVO.boardIdx}';
+        console.log(boardIdx)
+        console.log(commentContent)
+        $.ajax({
+            url : '/commentPost',
+            method : 'POST',
+            data : JSON.stringify({
+                'commentContent' : commentContent,
+                'boardIdx' : boardIdx,
+                'memberIdx' : '1' //균창아 여기 세션으로 넣어야해.
+            }),
+            dataType : 'json',
+            contentType : 'application/json',
+            success : function(data){
+                console.log(data.insertCommentVO.commentContent)
+                const commentTable = document.getElementById('comment-table');
+                var row = commentTable.insertRow(0);
+                var nameCell = row.insertCell(0);
+                var contentCell = row.insertCell(1);
+                var dateCell = row.insertCell(2);
+                nameCell.innerHTML = data.insertCommentVO.memberName;
+                contentCell.innerHTML = data.insertCommentVO.commentContent;
+                dateCell.innerHTML = data.insertCommentVO.commentDate;
+
+            }
+
+        })
+    }
+</script>
 </html>

@@ -9,4 +9,8 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
     List<CommentVO> selectCommentByBoardIdx(BoardVO boardVO);
+
+    void insertCommentByBoardIdx(CommentVO commentVO);
+
+    CommentVO selectLatestComment(CommentVO commentVO);
 }

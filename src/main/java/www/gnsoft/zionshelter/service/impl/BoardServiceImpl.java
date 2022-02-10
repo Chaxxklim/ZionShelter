@@ -16,7 +16,6 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService {
 
     private BoardMapper boardMapper;
-
     private CommentMapper commentMapper;
 
     @Autowired
@@ -48,5 +47,12 @@ public class BoardServiceImpl implements BoardService {
         BoardVO boardVO = new BoardVO();
         boardVO.setBoardIdx(boardIdx);
         return commentMapper.selectCommentByBoardIdx(boardVO);
+    }
+
+    @Override
+    public CommentVO insertComment(CommentVO commentVO) {
+        commentMapper.insertCommentByBoardIdx(commentVO);
+        return commentMapper.selectLatestComment(commentVO);
+
     }
 }

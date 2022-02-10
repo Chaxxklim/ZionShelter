@@ -15,4 +15,6 @@ public interface BoardService {
     BoardVO selectFreeBoard(Long boardIdx);
 
     List<CommentVO> selectCommentByBoardIdx(Long boardIdx);
+
+    CommentVO insertComment(CommentVO commentVO);
 }
