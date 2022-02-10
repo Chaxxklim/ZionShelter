@@ -55,4 +55,9 @@ public class BoardServiceImpl implements BoardService {
         return commentMapper.selectLatestComment(commentVO);
 
     }
+
+    @Override
+    public void insertBoard(BoardVO boardVO) {
+        boardMapper.insertBoard(boardVO);
+    }
 }

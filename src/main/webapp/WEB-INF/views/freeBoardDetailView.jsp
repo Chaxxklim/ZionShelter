@@ -69,7 +69,6 @@
                 nameCell.innerHTML = data.insertCommentVO.memberName;
                 contentCell.innerHTML = data.insertCommentVO.commentContent;
                 dateCell.innerHTML = data.insertCommentVO.commentDate;
-
             }
 
         })

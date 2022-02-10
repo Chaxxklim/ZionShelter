@@ -18,6 +18,5 @@ public interface BoardMapper {
     BoardVO selectFreeBoard(BoardVO boardVO);
 
 
-
-
+    void insertBoard(BoardVO boardVO);
 }

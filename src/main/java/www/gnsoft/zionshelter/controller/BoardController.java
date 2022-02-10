@@ -53,7 +53,6 @@ public class BoardController {
     public Map<String, Object> commentPost(@RequestBody Map<String, Object> map){
 
         CommentVO commentVO = new CommentVO();
-        BoardVO boardVO = new BoardVO();
         commentVO.setBoardIdx(Long.parseLong((String) map.get("boardIdx")));
         commentVO.setCommentContent((String) map.get("commentContent"));
         commentVO.setMemberIdx(Long.parseLong((String) map.get("memberIdx")));
@@ -63,4 +62,19 @@ public class BoardController {
         return resultMap;
 
     }
+
+    @RequestMapping("/boardWrite")
+    public String boardWrite(Model model){
+        BoardVO boardVO = new BoardVO();
+        model.addAttribute(boardVO);
+        return "boardWrite";
+    }
+
+    @RequestMapping("/boardWritePost")
+    public String boardWrite(@ModelAttribute("boardVO") BoardVO boardVO){
+        boardService.insertBoard(boardVO);
+        return "freeBoardList";
+    }
+
+
 }

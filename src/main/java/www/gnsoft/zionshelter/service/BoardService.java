@@ -17,4 +17,6 @@ public interface BoardService {
     List<CommentVO> selectCommentByBoardIdx(Long boardIdx);
 
     CommentVO insertComment(CommentVO commentVO);
+
+    void insertBoard(BoardVO boardVO);
 }

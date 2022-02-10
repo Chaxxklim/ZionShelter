@@ -17,6 +17,10 @@
 
     </resultMap>
 
+    <insert id="insertBoard" parameterType="BoardVO">
+        insert into board values(default, #{memberIdx}, #{boardDivision}, #{boardTitle}, #{boardContent}, default);
+    </insert>
+
     <select id="selectAllFreeBoard" resultMap="freeBoardVOResultMap">
         select B.board_idx,
                M.mem_idx,
