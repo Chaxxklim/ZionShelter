@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="www.gnsoft.zionshelter.mapper.CommentMapper">
+
+<!--    <resultMap id="selectCommentByBoardIdxResultMap" type="CommentVO">-->
+<!--        <id property="commentIdx" column="COMM_IDX"/>-->
+<!--        <id property="boardIdx" column="BOARD_IDX"/>-->
+<!--        <id property="commentDate" column="COMM_DATE"/>-->
+<!--        <id property="commentContent" column="COMM_CONT"/>-->
+<!--        <id property="memberIdx" column="MEM_IDX"/>-->
+<!--        <id property="memberName" column="MEM_NM"/>-->
+<!--    </resultMap>-->
+
+    <select id="selectCommentByBoardIdx" parameterType="BoardVO" resultType="CommentVO">
+        SELECT C.COMM_IDX AS commentIdx,
+               C.BOARD_IDX AS boardidx,
+               C.COMM_DATE AS commentDate,
+               C.COMM_CONT AS commentContent,
+               M.MEM_IDX AS memberIdx,
+               M.MEM_NM AS memberName
+        FROM    COMMENT C, MEMBER M
+        WHERE M.MEM_IDX = C.MEM_IDX AND
+            BOARD_IDX = #{boardIdx}
+    </select>
+
+    <insert id="insertCommentByBoardIdx" parameterType="CommentVO">
+        INSERT INTO COMMENT (BOARD_IDX, MEM_IDX, COMM_CONT) VALUES
+            (#{boardIdx}, #{memberIdx}, #{commentContent});
+    </insert>
+
+
+</mapper>
