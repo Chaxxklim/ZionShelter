@@ -12,7 +12,9 @@ import www.gnsoft.zionshelter.vo.MemberVO;
 public class MemberServiceImpl implements MemberService {
 
     @Autowired
-    private final MemberMapper memberMapper;
+    private MemberMapper memberMapper;
+    
+    
 
 
     @Override
