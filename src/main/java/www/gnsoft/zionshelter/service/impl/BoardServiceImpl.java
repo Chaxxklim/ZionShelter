@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import www.gnsoft.zionshelter.mapper.BoardMapper;
+import www.gnsoft.zionshelter.mapper.CommentMapper;
 import www.gnsoft.zionshelter.service.BoardService;
 import www.gnsoft.zionshelter.vo.BoardVO;
+import www.gnsoft.zionshelter.vo.CommentVO;
 
 import java.util.List;
 
@@ -13,8 +15,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
-    @Autowired
     private BoardMapper boardMapper;
+
+    private CommentMapper commentMapper;
+
+    @Autowired
+    public BoardServiceImpl(BoardMapper boardMapper, CommentMapper commentMapper) {
+        this.boardMapper = boardMapper;
+        this.commentMapper = commentMapper;
+    }
 
 
     @Override
@@ -32,5 +41,12 @@ public class BoardServiceImpl implements BoardService {
         BoardVO boardVO = new BoardVO();
         boardVO.setBoardIdx(boardIdx);
         return boardMapper.selectFreeBoard(boardVO);
+    }
+
+    @Override
+    public List<CommentVO> selectCommentByBoardIdx(Long boardIdx) {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setBoardIdx(boardIdx);
+        return commentMapper.selectCommentByBoardIdx(boardVO);
     }
 }

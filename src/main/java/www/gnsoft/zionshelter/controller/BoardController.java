@@ -2,12 +2,11 @@ package www.gnsoft.zionshelter.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import www.gnsoft.zionshelter.service.BoardService;
 import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.BoardVO;
+import www.gnsoft.zionshelter.vo.CommentVO;
 
 import java.util.List;
 
@@ -35,7 +34,18 @@ public class BoardController {
     public String boardDetail(@RequestParam Long boardIdx, Model model){
 
         BoardVO boardVO = boardService.selectFreeBoard(boardIdx);
+        List<CommentVO> commentVOList = boardService.selectCommentByBoardIdx(boardIdx);
+        CommentVO commentVO = new CommentVO();
         model.addAttribute("boardVO", boardVO);
+        model.addAttribute("commentVOList", commentVOList);
+        model.addAttribute("commentVO", commentVO);
         return "freeBoardDetailView";
+    }
+
+    @PostMapping("/commentPost")
+    public String commentPost(@ModelAttribute("commentVO") CommentVO commentVO){
+        System.out.println(commentVO);
+        return null;
+
     }
 }

@@ -173,7 +173,6 @@
             inputPhone.replace(regex, '');
             alert("잘했다~!")
             document.registerForm.submit();
-            console.log("보냈음")
         }
     }
 

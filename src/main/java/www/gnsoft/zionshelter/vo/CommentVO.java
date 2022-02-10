@@ -14,4 +14,5 @@ public class CommentVO {
     private long memberIdx;
     private Date commentDate;
     private String commentContent;
+    private String memberName;
 }
