@@ -44,7 +44,6 @@
 </style>
 <script>
     function postComment(){
-
         let commentContent = document.getElementById('commentContent').value;
         let boardIdx = '${boardVO.boardIdx}';
         console.log(boardIdx)
@@ -70,7 +69,6 @@
                 contentCell.innerHTML = data.insertCommentVO.commentContent;
                 dateCell.innerHTML = data.insertCommentVO.commentDate;
             }
-
         })
     }
 </script>
