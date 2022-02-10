@@ -42,7 +42,7 @@ public class BoardController {
         model.addAttribute("commentVO", commentVO);
         return "freeBoardDetailView";
     }
-
+    //---------제이가 만들어봐 댓글~----------
     @PostMapping("/commentPost")
     public String commentPost(@ModelAttribute("commentVO") CommentVO commentVO){
         System.out.println(commentVO);
