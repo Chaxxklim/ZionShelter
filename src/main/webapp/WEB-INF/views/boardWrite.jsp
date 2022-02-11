@@ -10,9 +10,9 @@
 <body>
 <div class="write-container">
     <table class="write-table">
-        <form:form action="boardWritePost" method="post" modelAttribute="boardVO">
+        <form:form action="boardWritePost" method="post" modelAttribute="boardVO" enctype="multipart/form-data">
             <form:input path="memberIdx" value="1"></form:input>
-<%--            여기 세션에서 받은 값으로 낼 바꾸장 오늘은 귀찮다 ^^ ㅎㅎ--%>
+            <%--            여기 세션에서 받은 값으로 낼 바꾸장 오늘은 귀찮다 ^^ ㅎㅎ--%>
 <%--            <form:input path="memberIdx" value="memberIdx"></form:input>--%>
             <tr>
                 <td>카테고리</td>
@@ -27,10 +27,13 @@
                 <td><form:input type="text" path="boardTitle" name="boardTitle"/></td>
                 <td>내용</td>
                 <td><form:input type="text" path="boardContent" name="boardContent"/></td>
+                <td>dd</td><td><form:input path="file" id="file" name="file" type="file"/></td>
                 <td><form:button type="submit">전송~</form:button></td>
             </tr>
         </form:form>
+
     </table>
+
 </div>
 
 </body>

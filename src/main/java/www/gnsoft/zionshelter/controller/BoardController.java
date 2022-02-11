@@ -1,9 +1,11 @@
 package www.gnsoft.zionshelter.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import www.gnsoft.zionshelter.service.BoardService;
 import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.BoardVO;
@@ -29,7 +31,6 @@ public class BoardController {
     @RequestMapping("/freeBoardList")
     public String boardList(Model model){
         List<BoardVO> boardVOList = boardService.selectAllFreeBoard();
-        System.out.println("test : " + boardService.selectAllFreeBoard());
         model.addAttribute("boardVOList", boardVOList);
 
         return "freeBoardList";
@@ -56,7 +57,6 @@ public class BoardController {
         commentVO.setBoardIdx(Long.parseLong((String) map.get("boardIdx")));
         commentVO.setCommentContent((String) map.get("commentContent"));
         commentVO.setMemberIdx(Long.parseLong((String) map.get("memberIdx")));
-        System.out.println(commentVO);
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("insertCommentVO", boardService.insertComment(commentVO));
         return resultMap;
@@ -72,9 +72,14 @@ public class BoardController {
 
     @RequestMapping("/boardWritePost")
     public String boardWrite(@ModelAttribute("boardVO") BoardVO boardVO){
+        System.out.println(boardVO);
+        System.out.println(boardVO.getFile().getName());
+        System.out.println(boardVO.getFile().getSize());
+        System.out.println(boardVO.getFile().getOriginalFilename());
         boardService.insertBoard(boardVO);
-        return "freeBoardList";
+        return "redirect:freeBoardList";
     }
+
 
 
 }

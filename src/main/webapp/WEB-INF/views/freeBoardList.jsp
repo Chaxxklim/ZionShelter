@@ -27,6 +27,7 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        overflow: scroll;
     }
 
 
@@ -35,6 +36,7 @@
         width: 100%;
         height: 100%;
         border: 1px solid black;
+        overflow: scroll;
     }
 </style>
 </html>

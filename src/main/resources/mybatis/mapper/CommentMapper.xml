@@ -25,6 +25,7 @@
         FROM    COMMENT C, MEMBER M
         WHERE M.MEM_IDX = C.MEM_IDX AND
             BOARD_IDX = #{boardIdx}
+        ORDER BY COMM_IDX DESC
     </select>
 
     <select id="selectLatestComment" parameterType="CommentVO" resultType="CommentVO">

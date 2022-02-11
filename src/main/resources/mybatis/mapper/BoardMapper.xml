@@ -32,6 +32,7 @@
         from member M, board B
         where B.board_dvsn = 'F' and
             B.mem_idx = M.mem_idx
+        order by board_idx desc;
     </select>
 
     <select id="selectFreeBoard" resultMap="freeBoardVOResultMap" parameterType="BoardVO">
@@ -46,6 +47,7 @@
         where B.board_dvsn = 'F' and
             B.mem_idx = M.mem_idx and
             B.board_idx = #{boardIdx}
+
     </select>
     
     <select id="selectAllNoticeBoard" resultType="java.util.List">
