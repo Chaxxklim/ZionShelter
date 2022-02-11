@@ -23,6 +23,7 @@
         <tr>
             <td>작성일</td><td>${boardVO.boardWriteDate}</td>
         </tr>
+<%--        여기에다가 이제 이미지 넣는거 해야함--%>
     </table>
 
     <table class="comment-table" id="comment-table">
