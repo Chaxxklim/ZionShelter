@@ -11,7 +11,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
-
 //@MapperScan(basePackageClasses = ZionShelterApplication.class)
 //@MapperScan(value = {"www.gnsoft.zionshelter.mapper"})
 @SpringBootApplication
