@@ -16,7 +16,6 @@
             <li class="top-navbar-li"><div class="navbar-li-item-div"><a href="/freeBoardList" >Freeboard</a></div></li>
             <li class="top-navbar-li"><div class="navbar-li-item-div"><a href="/dogBoardList" >DogList</a></div></li>
             <li class="top-navbar-li"><div class="navbar-li-item-div"><a href="/contact" >About us</a></div></li>
-
         </ul>
     </div>
     <div class="board-container">
@@ -27,13 +26,21 @@
                 <th>제목</th>
                 <th>작성일시</th>
             </tr>
-            <c:forEach items="${boardVOList}" var="boardVO">
-                <tr>
-                    <td>${boardVO.getBoardIdx()}</td>
-                    <td>${boardVO.getMemberName()}</td>
-                    <td><a href="/freeBoardDetail?boardIdx=${boardVO.getBoardIdx()}">${boardVO.getBoardTitle()}</a></td>
-                    <td>${boardVO.getBoardWriteDate()}</td>
-                </tr>
+<%--            <c:forEach items="${boardVOList}" var="boardVO">--%>
+<%--                <tr>--%>
+<%--                    <td>${boardVO.getBoardIdx()}</td>--%>
+<%--                    <td>${boardVO.getMemberName()}</td>--%>
+<%--                    <td><a href="/freeBoardDetail?boardIdx=${boardVO.getBoardIdx()}">${boardVO.getBoardTitle()}</a></td>--%>
+<%--                    <td>${boardVO.getBoardWriteDate()}</td>--%>
+<%--                </tr>--%>
+<%--            </c:forEach>--%>
+            <c:forEach var="i" begin="1" end="10" step="1">
+            <tr>
+                <td>11</td>
+                <td>균창임</td>
+                <td>테스트제목임니다~~</td>
+                <td>2022-02-13</td>
+            </tr>
             </c:forEach>
         </table>
     </div>
@@ -77,19 +84,29 @@
     .board-container{
         width: 100%;
         height: 100%;
-        /*align-self: center;*/
-        justify-self: center;
-
+        display: flex;
+        justify-content: center;
     }
 
     .boardList-table{
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 90%;
         border: 1px solid black;
         border-collapse: collapse;
+        border-radius: 5px;
         overflow: scroll;
         text-align: center;
     }
+
+    .boardList-table th{
+        height: 25px;
+    }
+
+    .boardList-table th, td{
+        border: 1px solid black;
+
+    }
+
 </style>
 </html>
 
