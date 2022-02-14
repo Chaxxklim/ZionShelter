@@ -16,10 +16,10 @@
     <div class="greetings-text-div">
         <div class="greetings-highlight-div">
             인사말vo
-            <%
-                System.out.println(memberVO);
-            %>
-            <%=memberVO.getMemberName()%>
+<%--            <%--%>
+<%--                System.out.println(memberVO);--%>
+<%--            %>--%>
+<%--            <%=memberVO.getMemberName()%>--%>
         </div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna
