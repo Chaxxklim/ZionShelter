@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%
+%>
 
 <html>
 <head>
@@ -11,7 +13,7 @@
 <div class="write-container">
     <table class="write-table">
         <form:form action="boardWritePost" method="post" modelAttribute="boardVO" enctype="multipart/form-data">
-            <form:input path="memberIdx" value="1"></form:input>
+            <form:input type="text" path="memberIdx" value="1"/>
             <%--            여기 세션에서 받은 값으로 낼 바꾸장 오늘은 귀찮다 ^^ ㅎㅎ--%>
 <%--            <form:input path="memberIdx" value="memberIdx"></form:input>--%>
             <tr>
@@ -46,25 +48,6 @@
         align-items: center;
     }
 
-    .register-container {
-
-    }
-
-    .register-table {
-        width: 80%;
-        height: 80%;
-
-    }
-
-    .id-check-td {
-        display: none;
-        white-space: nowrap;
-    }
-
-    .pw-check-td {
-        display: none;
-        white-space: nowrap;
-    }
 
 </style>
 
