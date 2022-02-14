@@ -91,20 +91,27 @@
     .boardList-table{
         width: 90%;
         height: 90%;
-        border: 1px solid black;
-        border-collapse: collapse;
-        border-radius: 5px;
+        color: black;
+        border: 1px;
+        border-radius: 10px;
         overflow: scroll;
         text-align: center;
+
+    }
+
+    .boardList-table th, td{
+        /*border: 1px solid black;*/
+        border: 1px;
+        color: black;
     }
 
     .boardList-table th{
         height: 25px;
+        padding: 10px 10px;
     }
 
-    .boardList-table th, td{
-        border: 1px solid black;
-
+    .boardList-table td{
+        padding: 20px 15px;
     }
 
 </style>
