@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>ZionShelter</title></head>
     <link rel="stylesheet" href="/resources/css/reset.css">
-    <link rel="stylesheet" href="/resources/css/common.css">
+    <link rel="stylesheet" hrㅠㅐef="/resources/css/common.css">
 <body>
 <div class="main-container">
     <div class="top-navbar">
@@ -34,7 +34,7 @@
 <%--                    <td>${boardVO.getBoardWriteDate()}</td>--%>
 <%--                </tr>--%>
 <%--            </c:forEach>--%>
-            <c:forEach var="i" begin="1" end="10" step="1">
+            <c:forEach   begin="1" end="10" step="1">
             <tr>
                 <td>11</td>
                 <td>균창임</td>
@@ -85,6 +85,7 @@
         width: 100%;
         height: 100%;
         display: flex;
+        border: 1px solid red;
         justify-content: center;
     }
 
@@ -101,7 +102,8 @@
 
     .boardList-table th, td{
         /*border: 1px solid black;*/
-        border: 1px;
+        border: 3px;
+        border-style: solid;
         color: black;
     }
 
