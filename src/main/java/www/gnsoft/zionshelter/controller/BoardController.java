@@ -1,13 +1,10 @@
 package www.gnsoft.zionshelter.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import www.gnsoft.zionshelter.service.BoardService;
-import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.BoardVO;
 import www.gnsoft.zionshelter.vo.CommentVO;
 
@@ -18,15 +15,12 @@ import java.util.Map;
 @Controller
 public class BoardController {
 
-    private final MemberService memberService;
     private final BoardService boardService;
 
     @Autowired
-    public BoardController(MemberService memberService, BoardService boardService) {
-        this.memberService = memberService;
+    public BoardController(BoardService boardService) {
         this.boardService = boardService;
     }
-
 
     @RequestMapping("/freeBoardList")
     public String boardList(Model model){
@@ -38,7 +32,6 @@ public class BoardController {
 
     @GetMapping("/freeBoardDetail")
     public String boardDetail(@RequestParam Long boardIdx, Model model){
-
         BoardVO boardVO = boardService.selectFreeBoard(boardIdx);
         List<CommentVO> commentVOList = boardService.selectCommentByBoardIdx(boardIdx);
         CommentVO commentVO = new CommentVO();
@@ -47,7 +40,6 @@ public class BoardController {
         model.addAttribute("commentVO", commentVO);
         return "freeBoardDetailView";
     }
-
 
     @PostMapping("/commentPost")
     @ResponseBody
@@ -79,7 +71,5 @@ public class BoardController {
         boardService.insertBoard(boardVO);
         return "redirect:freeBoardList";
     }
-
-
 
 }
