@@ -64,10 +64,6 @@ public class BoardController {
 
     @RequestMapping("/boardWritePost")
     public String boardWrite(@ModelAttribute("boardVO") BoardVO boardVO){
-        System.out.println(boardVO);
-        System.out.println(boardVO.getFile().getName());
-        System.out.println(boardVO.getFile().getSize());
-        System.out.println(boardVO.getFile().getOriginalFilename());
         boardService.insertBoard(boardVO);
         return "redirect:freeBoardList";
     }
