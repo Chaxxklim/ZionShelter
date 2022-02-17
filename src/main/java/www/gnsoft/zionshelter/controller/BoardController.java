@@ -68,4 +68,9 @@ public class BoardController {
         return "redirect:freeBoardList";
     }
 
+    @RequestMapping("/calculator")
+    public String calculator(){
+        return "calculator";
+    }
+
 }
