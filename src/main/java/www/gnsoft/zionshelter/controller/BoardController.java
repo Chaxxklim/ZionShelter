@@ -73,4 +73,9 @@ public class BoardController {
         return "calculator";
     }
 
+    @RequestMapping("/calculator2")
+    public String calculator2(){
+        return "calculator2";
+    }
+
 }

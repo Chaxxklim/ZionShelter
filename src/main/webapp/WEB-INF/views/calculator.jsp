@@ -49,6 +49,7 @@
     let firstNumber;
     let secondNumber;
     let result;
+    let numbers = [];
 
     function operatorBtn(e){
         if(operator != null){
@@ -57,7 +58,7 @@
             operator = e;
             let value = document.getElementById('number-input').value;
             value = value + e;
-            document.getElementById('number-input').setAttribute('value', value)
+            document.getElementById('number-input').setAttribute('value', value);
         }
 
     }
@@ -68,8 +69,11 @@
 
         if(value.includes('+') || value.includes('-') || value.includes('*') || value.includes('/')){
             let numberArray = value.split(operator);
+            numbers = value.split(operator);
             firstNumber = numberArray[0];
             secondNumber = numberArray[1];
+
+
             for(let i = 0; i < firstNumber.length; i++){
                 if(firstNumber.charAt(i) === '0' && firstNumber.charAt(i+1) !== '.' && i === 0 && firstNumber.length > 1){
                     firstNumber = firstNumber.substring(i + 2);
@@ -97,7 +101,6 @@
                 }
             }
         }
-
         document.getElementById('number-input').setAttribute('value', value);
     }
 
@@ -117,13 +120,18 @@
         if(numberArray != null && value !== "" && operator !== "" && operator != null){
             // firstNumber = parseFloat(numberArray[0]);
             // secondNumber = parseFloat(numberArray[1]);
-            if(operator === '+') result = firstNumber + secondNumber;
-            else if(operator === '-') result = firstNumber - secondNumber;
-            else if(operator === '*') result = firstNumber * secondNumber;
-            else if(operator === '/') result = firstNumber / secondNumber;
+            if(operator === '+') result = parseFloat(firstNumber) + parseFloat(secondNumber);
+            else if(operator === '-') result = parseFloat(firstNumber) - parseFloat(secondNumber);
+            else if(operator === '*') result = parseFloat(firstNumber) * parseFloat(secondNumber);
+            else if(operator === '/') result = parseFloat(firstNumber) / parseFloat(secondNumber);
             // result = eval(value);
 
             document.getElementById('number-input').setAttribute('value', result);
+            numberState = false;
+            operatorState = false;
+            secondNumber = "";
+            operator = null;
+            firstNumber = result;
 
         } else{
             alert("number null..")
