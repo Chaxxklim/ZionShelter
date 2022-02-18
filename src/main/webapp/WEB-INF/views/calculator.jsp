@@ -66,18 +66,36 @@
         let value = document.getElementById('number-input').value;
         value = value + e;
 
-        if(e === '.'){
-            document.getElementById('number-input').setAttribute('value', value);
-        }
         if(value.includes('+') || value.includes('-') || value.includes('*') || value.includes('/')){
             let numberArray = value.split(operator);
-            firstNumber = parseFloat(numberArray[0]);
-            secondNumber = parseFloat(numberArray[1]);
+            firstNumber = numberArray[0];
+            secondNumber = numberArray[1];
+            for(let i = 0; i < firstNumber.length; i++){
+                if(firstNumber.charAt(i) === '0' && firstNumber.charAt(i+1) !== '.' && i === 0 && firstNumber.length > 1){
+                    firstNumber = firstNumber.substring(i + 2);
+                } else if(firstNumber.charAt(i) === '.' && firstNumber.charAt(i + 1) === '.'){
+                    firstNumber = firstNumber.substring(0, i);
+                }
+            }
+            for(let i = 0; i < secondNumber.length; i++){
+                if(secondNumber.charAt(i) === '0' && secondNumber.charAt(i+1) !== '.' && i === 0 && secondNumber.length > 1){
+                    secondNumber = secondNumber.substring(i + 2);
+                } else if(secondNumber.charAt(i) === '.' && secondNumber.charAt(i + 1) === '.'){
+                    secondNumber = secondNumber.substring(0, i);
+                }
+            }
             firstNumber = firstNumber + "";
             secondNumber = secondNumber + "";
             value = firstNumber + operator + secondNumber;
         } else{
-            value = parseFloat(value);
+            for(let i = 0; i < value.length; i++){
+                if(value.charAt(i) === '0' && value.charAt(i+1) !== '.' && i === 0 && value.length > 1){
+                    console.log("else")
+                    value = value.substring(i + 2);
+                } else if(value.charAt(i) === '.' && value.charAt(i + 1) === '.'){
+                    value = value.substring(0, i);
+                }
+            }
         }
 
         document.getElementById('number-input').setAttribute('value', value);
@@ -97,13 +115,16 @@
         let value = document.getElementById('number-input').value;
         let numberArray = value.split(operator);
         if(numberArray != null && value !== "" && operator !== "" && operator != null){
-            firstNumber = parseFloat(numberArray[0]);
-            secondNumber = parseFloat(numberArray[1]);
+            // firstNumber = parseFloat(numberArray[0]);
+            // secondNumber = parseFloat(numberArray[1]);
             if(operator === '+') result = firstNumber + secondNumber;
             else if(operator === '-') result = firstNumber - secondNumber;
             else if(operator === '*') result = firstNumber * secondNumber;
             else if(operator === '/') result = firstNumber / secondNumber;
+            // result = eval(value);
+
             document.getElementById('number-input').setAttribute('value', result);
+
         } else{
             alert("number null..")
         }
