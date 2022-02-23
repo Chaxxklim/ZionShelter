@@ -88,6 +88,8 @@
         document.getElementById('number-input').setAttribute('value', value);
         // if(numbers[numbers.length - 1].charAt(numbers[numbers.length - 1].length - 1) === '0' && e === '0'){
         //     return false;
+        // 염오줌 소스도 참고...
+        // 머근이형 소스도 참고할것
         // }
     }
 
