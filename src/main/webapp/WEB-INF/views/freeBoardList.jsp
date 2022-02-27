@@ -6,7 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>ZionShelter</title></head>
     <link rel="stylesheet" href="/resources/css/reset.css">
-    <link rel="stylesheet" hrㅠㅐef="/resources/css/common.css">
+    <link rel="stylesheet" href="/resources/css/common.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <body>
 <div class="main-container">
     <div class="top-navbar">
@@ -26,28 +27,29 @@
                 <th>제목</th>
                 <th>작성일시</th>
             </tr>
-<%--            <c:forEach items="${boardVOList}" var="boardVO">--%>
-<%--                <tr>--%>
-<%--                    <td>${boardVO.getBoardIdx()}</td>--%>
-<%--                    <td>${boardVO.getMemberName()}</td>--%>
-<%--                    <td><a href="/freeBoardDetail?boardIdx=${boardVO.getBoardIdx()}">${boardVO.getBoardTitle()}</a></td>--%>
-<%--                    <td>${boardVO.getBoardWriteDate()}</td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-            <c:forEach   begin="1" end="10" step="1">
-            <tr>
-                <td>11</td>
-                <td>균창임</td>
-                <td>테스트제목임니다~~</td>
-                <td>2022-02-13</td>
-            </tr>
+            <c:forEach items="${boardVOList}" var="boardVO">
+                <tr>
+                    <td>${boardVO.getBoardIdx()}</td>
+                    <td>${boardVO.getMemberName()}</td>
+                    <td><a href="/freeBoardDetail?boardIdx=${boardVO.getBoardIdx()}">${boardVO.getBoardTitle()}</a></td>
+                    <td>${boardVO.getBoardWriteDate()}</td>
+                </tr>
             </c:forEach>
+<%--            <c:forEach   begin="1" end="10" step="1">--%>
+<%--            <tr>--%>
+<%--                <td>11</td>--%>
+<%--                <td>균창임</td>--%>
+<%--                <td>테스트제목임니다~~</td>--%>
+<%--                <td>2022-02-13</td>--%>
+<%--            </tr>--%>
+<%--            </c:forEach>--%>
         </table>
     </div>
 </div>
 
-
 </body>
+
+
 <style>
     .main-container{
         width: 100%;
