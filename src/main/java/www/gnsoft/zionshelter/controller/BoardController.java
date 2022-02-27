@@ -61,6 +61,8 @@ public class BoardController {
         resultMap.put("insertCommentVO", boardService.insertComment(commentVO));
         return resultMap;
 
+
+
     }
 
     @RequestMapping("/boardWrite")
