@@ -1,13 +1,10 @@
 package www.gnsoft.zionshelter.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import www.gnsoft.zionshelter.service.BoardService;
-import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.BoardVO;
 import www.gnsoft.zionshelter.vo.CommentVO;
 
@@ -18,15 +15,12 @@ import java.util.Map;
 @Controller
 public class BoardController {
 
-    private final MemberService memberService;
     private final BoardService boardService;
 
     @Autowired
-    public BoardController(MemberService memberService, BoardService boardService) {
-        this.memberService = memberService;
+    public BoardController(BoardService boardService) {
         this.boardService = boardService;
     }
-
 
     @RequestMapping("/freeBoardList")
     public String boardList(Model model){
@@ -38,7 +32,6 @@ public class BoardController {
 
     @GetMapping("/freeBoardDetail")
     public String boardDetail(@RequestParam Long boardIdx, Model model){
-
         BoardVO boardVO = boardService.selectFreeBoard(boardIdx);
         List<CommentVO> commentVOList = boardService.selectCommentByBoardIdx(boardIdx);
         CommentVO commentVO = new CommentVO();
@@ -47,7 +40,6 @@ public class BoardController {
         model.addAttribute("commentVO", commentVO);
         return "freeBoardDetailView";
     }
-
 
     @PostMapping("/commentPost")
     @ResponseBody
@@ -61,8 +53,6 @@ public class BoardController {
         resultMap.put("insertCommentVO", boardService.insertComment(commentVO));
         return resultMap;
 
-
-
     }
 
     @RequestMapping("/boardWrite")
@@ -74,14 +64,24 @@ public class BoardController {
 
     @RequestMapping("/boardWritePost")
     public String boardWrite(@ModelAttribute("boardVO") BoardVO boardVO){
-        System.out.println(boardVO);
-        System.out.println(boardVO.getFile().getName());
-        System.out.println(boardVO.getFile().getSize());
-        System.out.println(boardVO.getFile().getOriginalFilename());
         boardService.insertBoard(boardVO);
         return "redirect:freeBoardList";
     }
 
+    @RequestMapping("/calculator")
+    public String calculator(){
+        return "calculator";
+    }
 
+    @RequestMapping("/calculator2")
+    public String calculator2(){
+        return "calculator2";
+    }
+
+
+    @RequestMapping("/calculator3")
+    public String calculator3(){
+        return "calculator3";
+    }
 
 }
