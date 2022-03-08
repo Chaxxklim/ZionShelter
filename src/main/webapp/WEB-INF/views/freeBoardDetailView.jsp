@@ -49,6 +49,8 @@
         let boardIdx = '${boardVO.boardIdx}';
         console.log(boardIdx)
         console.log(commentContent)
+
+
         $.ajax({
             url : '/commentPost',
             method : 'POST',
