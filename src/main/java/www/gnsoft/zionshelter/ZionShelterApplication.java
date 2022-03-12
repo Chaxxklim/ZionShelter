@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 //@MapperScan(value = {"www.gnsoft.zionshelter.mapper"})
 @SpringBootApplication
 public class ZionShelterApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ZionShelterApplication.class, args);
     }
