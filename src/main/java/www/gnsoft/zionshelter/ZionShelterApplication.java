@@ -10,7 +10,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
-
 //@MapperScan(basePackageClasses = ZionShelterApplication.class)
 //@MapperScan(value = {"www.gnsoft.zionshelter.mapper"})
 @SpringBootApplication
@@ -18,5 +17,4 @@ public class ZionShelterApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZionShelterApplication.class, args);
     }
-
 }

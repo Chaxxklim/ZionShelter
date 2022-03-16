@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     MemberVO memberVO = (MemberVO) session.getAttribute("memberVO");
+    String test = (String) session.getAttribute("test");
 %>
 <html>
 <head>
@@ -16,6 +17,7 @@
     <div class="greetings-text-div">
         <div class="greetings-highlight-div">
             인사말vo
+            <%=session.getAttribute("test")%>
 <%--            <%--%>
 <%--                System.out.println(memberVO);--%>
 <%--            %>--%>
