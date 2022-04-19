@@ -9,6 +9,7 @@ import www.gnsoft.zionshelter.service.BoardService;
 import www.gnsoft.zionshelter.service.MemberService;
 import www.gnsoft.zionshelter.vo.MemberVO;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -28,7 +29,9 @@ public class IndexController {
 
 
     @RequestMapping("/")
-    public String index(){
+    public String index(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("test", "심재린");
         return "index";
     }
 

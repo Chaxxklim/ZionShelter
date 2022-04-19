@@ -10,24 +10,11 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
-
 //@MapperScan(basePackageClasses = ZionShelterApplication.class)
 //@MapperScan(value = {"www.gnsoft.zionshelter.mapper"})
 @SpringBootApplication
 public class ZionShelterApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ZionShelterApplication.class, args);
     }
-
-//    @Bean
-//    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-//        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-//        sessionFactory.setDataSource(dataSource);
-//
-//        Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/mapper/*.xml");
-//        sessionFactory.setMapperLocations(res);
-//
-//        return sessionFactory.getObject();
-//    }
 }
