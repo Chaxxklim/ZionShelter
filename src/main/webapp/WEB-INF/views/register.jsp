@@ -147,7 +147,6 @@
             oncomplete : function(data){
                 document.getElementById('zipcode-input').value = data.zonecode;
                 document.getElementById('addr1-input').value = data.address;
-
             }
         }).open();
     }
@@ -175,12 +174,6 @@
             document.registerForm.submit();
         }
     }
-
-
-
-
-
-
 
 </script>
 </html>
