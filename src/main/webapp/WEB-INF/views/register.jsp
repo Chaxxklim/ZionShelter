@@ -149,7 +149,6 @@
                 document.getElementById('addr1-input').value = data.address;
             }
         }).open();
-    }
 
     function beforeSubmit(){
         let inputId = document.getElementById('id-input').value;
