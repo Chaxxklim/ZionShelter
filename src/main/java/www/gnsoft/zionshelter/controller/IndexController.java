@@ -54,6 +54,7 @@ public class IndexController {
     public String loginPost(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request){
         HttpSession session = request.getSession();
         if(memberService.selectMember(memberVO) == null) {
+
             return "login";
         } else {
             session.setAttribute("memberVO", memberService.selectMember(memberVO));

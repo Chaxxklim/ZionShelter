@@ -163,7 +163,7 @@
 
         if(!idExp.test(inputId) || !pwExp.test(inputPw) || !nameExp.test(inputName)|| inputPhone.length < 10 ||
             !phoneExp.test(inputPhone) || inputZipcode.length < 1 || addr1Input.length < 1){
-            alert("입력 똑바로 안됐다")
+            alert("입력 똑바로 안됐다");
             return false;
         } else{
             let regex = / /gi;
@@ -171,7 +171,7 @@
             inputPw.replace(regex, '');
             inputName.replace(regex, '');
             inputPhone.replace(regex, '');
-            alert("잘했다~!")
+            alert("잘했다~!");
             document.registerForm.submit();
         }
     }

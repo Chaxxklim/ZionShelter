@@ -13,8 +13,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Autowired
     private MemberMapper memberMapper;
-    
-    
 
 
     @Override
