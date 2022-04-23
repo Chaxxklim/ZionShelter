@@ -85,12 +85,11 @@ public class IndexController {
     @PostMapping("/registerPost")
     public String registerPost(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request){
         HttpSession session = request.getSession();
-        MemberVO registerdVO = null;
+        MemberVO registeredVO = null;
         memberService.registerMember(memberVO);
-        registerdVO = memberService.selectMember(memberVO);
-        session.setAttribute("memberVO", registerdVO);
+        registeredVO = memberService.selectMember(memberVO);
+        session.setAttribute("memberVO", registeredVO);
         return "index";
-
     }
 
 
