@@ -147,10 +147,8 @@
             oncomplete : function(data){
                 document.getElementById('zipcode-input').value = data.zonecode;
                 document.getElementById('addr1-input').value = data.address;
-
             }
         }).open();
-    }
 
     function beforeSubmit(){
         let inputId = document.getElementById('id-input').value;
@@ -160,7 +158,6 @@
         let inputZipcode = document.getElementById('zipcode-input').value;
         let addr1Input = document.getElementById('addr1-input').value;
         // let addr2Input = document.getElementById('addr2-input').value;
-
         if(!idExp.test(inputId) || !pwExp.test(inputPw) || !nameExp.test(inputName)|| inputPhone.length < 10 ||
             !phoneExp.test(inputPhone) || inputZipcode.length < 1 || addr1Input.length < 1){
             alert("입력 똑바로 안됐다");
@@ -175,12 +172,6 @@
             document.registerForm.submit();
         }
     }
-
-
-
-
-
-
 
 </script>
 </html>
