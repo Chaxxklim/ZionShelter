@@ -27,7 +27,6 @@ public class IndexController {
         this.boardService = boardService;
     }
 
-
     @RequestMapping("/")
     public String index(HttpServletRequest request){
         HttpSession session = request.getSession();
